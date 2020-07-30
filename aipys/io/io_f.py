@@ -15,13 +15,13 @@ def read_xyz(file_path):
     out_dict = {}
     with open(file_path, 'r') as f:
         i = 0
-        for lin in f:
-            line = lin.split()
-            if len(line) == 4:
-                out_dict[i] = [float(x) for x in line]
-            i += 1
-    return pd.DataFrame.from_dict(out_dict, orient='index', 
-                                  columns=['Z', 'x', 'y', 'z'])
+        for line in f:
+            if len(line.split()) == 4:
+                out_dict[i] = line.split()
+                for j in range(1,4):
+                    out_dict[i][j] = float(out_dict[i][j])
+                i += 1
+        return pd.DataFrame.from_dict(out_dict, orient='index', columns=['Z', 'x', 'y', 'z'])
 
 
 def write_xyz(xyz, file, header=True):

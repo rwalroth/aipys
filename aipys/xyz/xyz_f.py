@@ -13,7 +13,7 @@ from scipy.spatial import KDTree
 # This module imports
 from ..consts import atomic_radii
 
-COV_RADII = atomic_radii['Covalent (single bond)']
+COV_RADII = atomic_radii['covalent_single']
 
 
 def rotate_point_x(xyz, theta, radians=False):

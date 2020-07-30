@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 color_dict = {
     'C': [0,0,0],
@@ -7,4 +8,9 @@ color_dict = {
     'Si': [0.3,0.3,0.3],
 }
 
-atomic_radii = pd.read_csv('atomic_radii.csv', index_col='symbol')/100
+atomic_radii = pd.read_csv(
+    os.path.join(
+        os.path.abspath(os.path.dirname(__file__)), 'atomic_radii.csv'
+    ),
+    index_col='symbol'
+)
