@@ -86,3 +86,11 @@ def coord_number(i, xyz, tree=None):
     radii = pd.DataFrame({'radii':COV_RADII[xyz.iloc[ids]['Z']]})
     cn = (radii.iloc[0]['radii'] + radii >= dists.reshape(-1,1)).sum() - 1
     return cn.iloc[0]
+
+
+def get_info(xyz, charge_dict):
+    out = {}
+    formula = dict(xyz.groupby('Z').count()['x'])
+    out['total charge'] = sum([val*charge_dict[key] for key, val in formula.items()])
+    out['chemical formula'] = formula
+    return out
