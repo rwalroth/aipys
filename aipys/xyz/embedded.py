@@ -60,12 +60,12 @@ def get_constraints(qm, ecp, kind='box', bounds=[5,5,10]):
     constrained['cart_range'] = [[qm.shape[0], qm.shape[0] + ecp.shape[0] - 1]]
     if kind == 'cylinder':
         for i in range(qm.shape[0]):
-            if (np.sqrt(qm.iloc[i]['x']**2 + qm.iloc[i]['y']**2) >= bounds[0]) | (qm.iloc[i]['z'] <= bounds[1]):
+            if (np.sqrt(qm.iloc[i]['x']**2 + qm.iloc[i]['y']**2) >= bounds[0]) | (abs(qm.iloc[i]['z']) >= bounds[1]):
                 constrained['cart'].append(i)
                 
     elif kind == 'box':
         for i in range(qm.shape[0]):
-            if (abs(qm.iloc[i]['x']) >= bounds[0]) | (abs(qm.iloc[i]['y']) >= bounds[1]) | (qm.iloc[i]['z'] <= bounds[2]):
+            if (abs(qm.iloc[i]['x']) >= bounds[0]) | (abs(qm.iloc[i]['y']) >= bounds[1]) | (abs(qm.iloc[i]['z']) >= bounds[2]):
                 constrained['cart'].append(i)
     
     return constrained

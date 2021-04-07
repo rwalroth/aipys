@@ -9,17 +9,12 @@
 from matplotlib import pyplot as plt
 
 # This module imports
-
+from aipys.consts import color_dict
 
 # constants
 
 
-COLOR_DICT = {
-    'C': [0,0,0],
-    'O': [1,0,0],
-    'N': [0,0,1],
-    'Si': [0.3,0.3,0.3],
-}
+COLOR_DICT = color_dict
 
 
 def plot_xyz(df, fig=None, loc=111, **kwargs):
