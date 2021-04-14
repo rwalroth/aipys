@@ -71,13 +71,13 @@ def get_constraints(qm, ecp, kind='box', bounds=[5,5,10]):
     return constrained
 
 
-def clean_qm(qm, ecp, threshhold):
+def clean_qm(qm, ecp, threshhold, radius="covalent_single"):
     qm_out = qm.copy()
     ecp_out = ecp.copy()
     qm_tree = KDTree(qm[['x', 'y', 'z']])
     for i, idx in enumerate(qm.index):
         Z = qm.loc[idx]['Z']
-        cn = coord_number(i, qm, qm_tree)
+        cn = coord_number(i, qm, qm_tree, radius)
         if cn < threshhold[Z]:
             ecp_out.loc[idx] = qm.loc[idx]
             qm_out.drop(idx, inplace=True)

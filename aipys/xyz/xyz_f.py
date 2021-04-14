@@ -13,7 +13,7 @@ from scipy.spatial import KDTree
 # This module imports
 from ..consts import atomic_radii
 
-COV_RADII = atomic_radii['covalent_single']
+# COV_RADII = atomic_radii['covalent_single']
 
 
 def rotate_point_x(xyz, theta, radians=False):
@@ -76,14 +76,15 @@ def rotate_point_z(xyz, theta, radians=False):
     return np.matmul(xyz, Rz)
 
 
-def coord_number(i, xyz, tree=None):
+def coord_number(i, xyz, tree=None, radius="covalent_single"):
+    RADII = atomic_radii[radius]
     if tree is None:
         tree = KDTree(xyz[['x', 'y', 'z']])
     dists, ids = tree.query(tree.data[i], k=10, p=2)
     finites = np.isfinite(dists)
     dists = dists[finites]
     ids = ids[finites]
-    radii = pd.DataFrame({'radii':COV_RADII[xyz.iloc[ids]['Z']]})
+    radii = pd.DataFrame({'radii':RADII[xyz.iloc[ids]['Z']]})
     cn = (radii.iloc[0]['radii'] + radii >= dists.reshape(-1,1)).sum() - 1
     return cn.iloc[0]
 

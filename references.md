@@ -9,6 +9,7 @@ E. Clementi; D.L.Raimondi; W.P. Reinhardt (1967). "Atomic Screening Constants fr
 ## Van der Waals radius
 A. Bondi (1964). "van der Waals Volumes and Radii". J. Phys. Chem. 68: 441. doi:10.1021/j100785a001.
 M. Mantina; A.C. Chamberlin; R. Valero; C.J. Cramer; D.G. Truhlar (2009). "Consistent van der Waals Radii for the Whole Main Group". J. Phys. Chem. A. 113 (19): 5806–12. Bibcode:2009JPCA..113.5806M. doi:10.1021/jp8111556. PMC 3658832. PMID 19382751.
+Batsanov, S. S. "Van der Waals radii of elements." Inorganic materials 37.9 (2001): 871-885.
 
 ## Covalent radii (single bond)
 R.T. Sanderson (1962). Chemical Periodicity. New York, USA: Reinhold.
