@@ -25,7 +25,10 @@ def plot_xyz(df, fig=None, loc=111, **kwargs):
     else:
         ax = fig.add_subplot(loc[0], loc[1], loc[2], projection='3d', **kwargs)
 
-    ax.scatter(df['x'], df['y'], df['z'], c=[COLOR_DICT[key] for key in df['Z']])
+    colors = [COLOR_DICT[key] if key in COLOR_DICT
+              else [0.2, 0.2, 0.2] for key in df['Z']]
+
+    ax.scatter(df['x'], df['y'], df['z'], c=colors)
     
     return ax
 
